@@ -91,6 +91,11 @@ async function UserState(req, res) {
   const token = req.cookies?.token;
 
   if (!token) {
+    res.clearCookie("token", {
+      httpOnly: true,
+    secure: true, // Secure cookies only in production
+    sameSite:  "Lax", 
+    });
     return res
       .status(401)
       .send({ message: "Unauthorized: Token missing", valid: false });
@@ -156,11 +161,11 @@ async function Logout(req, res) {
     const token = req.cookies?.token;
     console.log(token)
     if (!token) {
-      // res.clearCookie("token", {
-      //   httpOnly: true,
-      //   secure: true, // Secure cookies only in production
-      //   sameSite:  "Lax", 
-      // });
+      res.clearCookie("token", {
+        httpOnly: true,
+        secure: true, // Secure cookies only in production
+        sameSite:  "Lax", 
+      });
 
       return res
         .status(401)
