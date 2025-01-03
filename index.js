@@ -8,7 +8,7 @@ const {
   getAllVideos,
   getVideoById,
 } = require("./src/Vidio");
-const app = run(5000, ["http://localhost:5173","https://mb-play.onrender.com"]);
+const app = run(5000, ["http://localhost:5173","https://mb-play.onrender.com","https://play.manojgowda.in"]);
 
 app.use(cookieParser());
 
