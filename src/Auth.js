@@ -154,12 +154,13 @@ async function UserState(req, res) {
 async function Logout(req, res) {
   try {
     const token = req.cookies?.token;
+    console.log(token)
     if (!token) {
-      res.clearCookie("token", {
-        httpOnly: true,
-        secure: true, // Secure cookies only in production
-        sameSite:  "Lax", 
-      });
+      // res.clearCookie("token", {
+      //   httpOnly: true,
+      //   secure: true, // Secure cookies only in production
+      //   sameSite:  "Lax", 
+      // });
 
       return res
         .status(401)
