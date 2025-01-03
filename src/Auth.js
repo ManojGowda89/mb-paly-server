@@ -1,15 +1,15 @@
-const { nosql } = require("mbfi");
+const connectDB = require("mb64-connect")
 const crypto = require("crypto");
 const { CreateJWT, VerifyJWT } = require("./utils/jwt");
 
-const UserAuth = nosql.validation("user", {
+const UserAuth = connectDB.validation("user", {
   name: { type: String, required: true },
   email: { type: String, required: true },
   password: { type: String, required: true },
   isAdmin: { type: Boolean, default: false },
 });
 
-const DeviceString = nosql.validation("dev", {
+const DeviceString = connectDB.validation("dev", {
   email: { type: String, required: false },
   device: { type: String, required: true },
 });

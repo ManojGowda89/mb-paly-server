@@ -1,7 +1,7 @@
-const { nosql } = require("mbfi"); 
+const connectDB = require("mb64-connect")
 
 
-const Video = nosql.validation("video", {
+const Video = connectDB.validation("video", {
   videoName: { type: String, required: true },
   videoUrl: { type: String, required: true },
   thumbnailUrl: { type: String, required: true },
