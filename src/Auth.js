@@ -68,8 +68,8 @@ async function Login(req, res) {
 
     res.cookie("token", token, {
       httpOnly: true,
-      secure: isProduction, // Secure cookies only in production
-      sameSite: isProduction ? "strict" : "lax", // Relaxed policy for local development
+      secure: true, // Secure cookies only in production
+      sameSite:  "lax", 
       maxAge: 3600000, // 1 hour
     });
 
@@ -102,8 +102,8 @@ async function UserState(req, res) {
     if (!email || !device) {
       res.clearCookie("token", {
         httpOnly: true,
-        secure: isProduction,
-        sameSite: isProduction ? "strict" : "lax",
+      secure: true, // Secure cookies only in production
+      sameSite:  "lax", 
       });
       return res
         .status(401)
@@ -115,8 +115,8 @@ async function UserState(req, res) {
     if (!deviceRecord) {
       res.clearCookie("token", {
         httpOnly: true,
-        secure: isProduction,
-        sameSite: isProduction ? "strict" : "lax",
+      secure: true, // Secure cookies only in production
+      sameSite:  "lax", 
       });
       return res
         .status(401)
@@ -140,8 +140,8 @@ async function UserState(req, res) {
   } catch (error) {
     res.clearCookie("token", {
       httpOnly: true,
-      secure: isProduction,
-      sameSite: isProduction ? "strict" : "lax",
+      secure: true, // Secure cookies only in production
+      sameSite:  "lax", 
     });
     res.status(401).send({
       message: "Unauthorized: Invalid or expired token",
@@ -157,8 +157,8 @@ async function Logout(req, res) {
     if (!token) {
       res.clearCookie("token", {
         httpOnly: true,
-        secure: isProduction,
-        sameSite: isProduction ? "strict" : "lax",
+        secure: true, // Secure cookies only in production
+        sameSite:  "lax", 
       });
 
       return res
@@ -171,8 +171,8 @@ async function Logout(req, res) {
     if (!email || !device) {
       res.clearCookie("token", {
         httpOnly: true,
-        secure: isProduction,
-        sameSite: isProduction ? "strict" : "lax",
+        secure: true, // Secure cookies only in production
+        sameSite:  "lax", 
       });
       return res
         .status(401)
@@ -182,8 +182,8 @@ async function Logout(req, res) {
     await DeviceString.deleteOne({ email, device });
     res.clearCookie("token", {
       httpOnly: true,
-      secure: isProduction,
-      sameSite: isProduction ? "strict" : "lax",
+      secure: true, // Secure cookies only in production
+      sameSite:  "lax", 
     });
 
     res.status(200).send({ message: "Logout successful" });
