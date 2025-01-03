@@ -98,7 +98,7 @@ async function UserState(req, res) {
     });
     return res
       .status(401)
-      .send({ message: "Unauthorized: Token missing", valid: false });
+      .send();
   }
 
   try {
@@ -112,7 +112,7 @@ async function UserState(req, res) {
       });
       return res
         .status(401)
-        .send({ message: "Unauthorized: Invalid token", valid: false });
+        .send();
     }
 
     const deviceRecord = await DeviceString.findOne({ email, device });
@@ -125,12 +125,12 @@ async function UserState(req, res) {
       });
       return res
         .status(401)
-        .send({ message: "Unauthorized: Device mismatch", valid: false });
+        .send();
     }
 
     const user = await UserAuth.findOne({ email });
     if (!user) {
-      return res.status(404).send({ message: "User not found", valid: false });
+      return res.status(404).send();
     }
 
     res.status(200).send({
