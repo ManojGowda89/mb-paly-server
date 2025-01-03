@@ -69,7 +69,7 @@ async function Login(req, res) {
     res.cookie("token", token, {
       httpOnly: true,
       secure: true, // Secure cookies only in production
-      sameSite:  "lax", 
+      sameSite:  "Lax", 
       maxAge: 3600000, // 1 hour
     });
 
@@ -103,7 +103,7 @@ async function UserState(req, res) {
       res.clearCookie("token", {
         httpOnly: true,
       secure: true, // Secure cookies only in production
-      sameSite:  "lax", 
+      sameSite:  "Lax", 
       });
       return res
         .status(401)
@@ -116,7 +116,7 @@ async function UserState(req, res) {
       res.clearCookie("token", {
         httpOnly: true,
       secure: true, // Secure cookies only in production
-      sameSite:  "lax", 
+      sameSite:  "Lax", 
       });
       return res
         .status(401)
@@ -141,7 +141,7 @@ async function UserState(req, res) {
     res.clearCookie("token", {
       httpOnly: true,
       secure: true, // Secure cookies only in production
-      sameSite:  "lax", 
+      sameSite:  "Lax", 
     });
     res.status(401).send({
       message: "Unauthorized: Invalid or expired token",
@@ -158,7 +158,7 @@ async function Logout(req, res) {
       res.clearCookie("token", {
         httpOnly: true,
         secure: true, // Secure cookies only in production
-        sameSite:  "lax", 
+        sameSite:  "Lax", 
       });
 
       return res
@@ -172,7 +172,7 @@ async function Logout(req, res) {
       res.clearCookie("token", {
         httpOnly: true,
         secure: true, // Secure cookies only in production
-        sameSite:  "lax", 
+        sameSite:  "Lax", 
       });
       return res
         .status(401)
@@ -183,7 +183,7 @@ async function Logout(req, res) {
     res.clearCookie("token", {
       httpOnly: true,
       secure: true, // Secure cookies only in production
-      sameSite:  "lax", 
+      sameSite:  "Lax", 
     });
 
     res.status(200).send({ message: "Logout successful" });
